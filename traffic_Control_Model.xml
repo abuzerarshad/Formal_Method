@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_2.dtd'>
+<nta>
+	<declaration>// Place global declarations here.
+chan G_11_red, NUST_H_12_red, Zero_point_red, New_Airport_red;</declaration>
+	<template>
+		<name x="5" y="5">G_11</name>
+		<declaration>// Place local declarations here.
+clock timer;</declaration>
+		<location id="id0" x="-51" y="-8">
+			<name x="-68" y="8">Yellow</name>
+			<label kind="invariant" x="-68" y="25">timer&lt;=5</label>
+		</location>
+		<location id="id1" x="-187" y="102">
+			<name x="-212" y="59">Green</name>
+			<label kind="invariant" x="-221" y="119">timer&lt;=50</label>
+		</location>
+		<location id="id2" x="-323" y="8">
+			<name x="-365" y="8">Red</name>
+		</location>
+		<init ref="id2"/>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id2"/>
+			<label kind="guard" x="-212" y="-34">timer==5</label>
+			<label kind="synchronisation" x="-221" y="-59">G_11_red!</label>
+			<nail x="-195" y="-93"/>
+			<nail x="-297" y="-17"/>
+		</transition>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id0"/>
+			<label kind="guard" x="-119" y="51">timer==50</label>
+			<label kind="assignment" x="-110" y="68">timer=0</label>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id1"/>
+			<label kind="synchronisation" x="-408" y="34">New_Airport_red?</label>
+			<label kind="assignment" x="-340" y="59">timer=0</label>
+		</transition>
+	</template>
+	<template>
+		<name>NUST_H_12</name>
+		<declaration>clock timer;</declaration>
+		<location id="id3" x="93" y="-8">
+			<name x="76" y="17">Yellow</name>
+			<label kind="invariant" x="76" y="34">timer&lt;=5</label>
+		</location>
+		<location id="id4" x="-51" y="85">
+			<name x="-77" y="42">Green</name>
+			<label kind="invariant" x="-77" y="102">timer&lt;=50</label>
+		</location>
+		<location id="id5" x="-195" y="0">
+			<name x="-212" y="16">Red</name>
+		</location>
+		<init ref="id5"/>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id5"/>
+			<label kind="guard" x="-76" y="-34">timer==5</label>
+			<label kind="synchronisation" x="-102" y="-59">NUST_H_12_red!</label>
+			<nail x="-51" y="-102"/>
+			<nail x="-161" y="-25"/>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id3"/>
+			<label kind="guard" x="0" y="51">timer==50</label>
+			<label kind="assignment" x="17" y="68">timer=0</label>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id4"/>
+			<label kind="synchronisation" x="-255" y="34">G_11_red?</label>
+			<label kind="assignment" x="-221" y="51">timer=0</label>
+		</transition>
+	</template>
+	<template>
+		<name>Zero_point</name>
+		<declaration>clock timer;</declaration>
+		<location id="id6" x="-42" y="-8">
+			<name x="-50" y="8">Yellow</name>
+			<label kind="invariant" x="-59" y="25">timer&lt;=5</label>
+		</location>
+		<location id="id7" x="-187" y="93">
+			<name x="-204" y="51">Green</name>
+			<label kind="invariant" x="-212" y="110">timer&lt;=50</label>
+		</location>
+		<location id="id8" x="-348" y="-8">
+			<name x="-365" y="8">Red</name>
+		</location>
+		<init ref="id8"/>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id8"/>
+			<label kind="guard" x="-221" y="-34">timer==5</label>
+			<label kind="synchronisation" x="-255" y="-59">Zero_point_red!</label>
+			<nail x="-195" y="-102"/>
+			<nail x="-323" y="-25"/>
+		</transition>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id6"/>
+			<label kind="guard" x="-102" y="51">timer==50</label>
+			<label kind="assignment" x="-93" y="68">timer=0</label>
+		</transition>
+		<transition>
+			<source ref="id8"/>
+			<target ref="id7"/>
+			<label kind="synchronisation" x="-408" y="42">NUST_H_12_red?</label>
+			<label kind="assignment" x="-348" y="59">timer=0</label>
+		</transition>
+	</template>
+	<template>
+		<name>New_Airport</name>
+		<declaration>clock timer;</declaration>
+		<location id="id9" x="-42" y="-17">
+			<name x="-50" y="-1">Yellow</name>
+			<label kind="invariant" x="-67" y="16">timer&lt;=5</label>
+		</location>
+		<location id="id10" x="-178" y="85">
+			<name x="-195" y="42">Green</name>
+			<label kind="invariant" x="-212" y="102">timer&lt;=100</label>
+		</location>
+		<location id="id11" x="-323" y="-8">
+			<name x="-340" y="8">Red</name>
+		</location>
+		<init ref="id10"/>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id11"/>
+			<label kind="guard" x="-204" y="-42">timer==5</label>
+			<label kind="synchronisation" x="-238" y="-68">New_Airport_red!</label>
+			<nail x="-179" y="-110"/>
+			<nail x="-297" y="-25"/>
+		</transition>
+		<transition>
+			<source ref="id10"/>
+			<target ref="id9"/>
+			<label kind="guard" x="-85" y="59">timer==100</label>
+			<label kind="assignment" x="-85" y="76">timer=0</label>
+		</transition>
+		<transition>
+			<source ref="id11"/>
+			<target ref="id10"/>
+			<label kind="synchronisation" x="-408" y="34">Zero_point_red?</label>
+			<label kind="assignment" x="-357" y="51">timer=0</label>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+
+// List one or more processes to be composed into a system.
+system G_11, NUST_H_12, Zero_point, New_Airport;</system>
+	<queries>
+		<query>
+			<formula>A[] New_Airport.Green imply   (G_11.Red and NUST_H_12.Red and Zero_point.Red)
+			</formula>
+			<comment>
+			</comment>
+		</query>
+		<query>
+			<formula>A[] not (G_11.Green &amp;&amp; NUST_H_12.Green &amp;&amp; Zero_point.Green &amp;&amp; New_Airport.Green)
+			</formula>
+			<comment>For all the future states, not all the signals turn to green at the same time.
+			</comment>
+		</query>
+		<query>
+			<formula>A[] not deadlock
+			</formula>
+			<comment>For all the future states there does not exist a deadlock. 
+			</comment>
+		</query>
+		<query>
+			<formula>E&lt;&gt; New_Airport.Green
+			</formula>
+			<comment>There exist a state in future, when Airport signal turns to green.
+			</comment>
+		</query>
+		<query>
+			<formula>E&lt;&gt; NUST_H_12.Green
+			</formula>
+			<comment>
+			</comment>
+		</query>
+		<query>
+			<formula>E&lt;&gt; G_11.Green
+			</formula>
+			<comment>
+			</comment>
+		</query>
+		<query>
+			<formula>E&lt;&gt; Zero_point.Green
+			</formula>
+			<comment>
+			</comment>
+		</query>
+	</queries>
+</nta>
